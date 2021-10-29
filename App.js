@@ -52,7 +52,15 @@ function TestScreen({ navigation }) {
  
 function PetInfoScreen({ navigation }) {
  return (
-   <Profile breed = {"bagel"}></Profile>
+   <><Profile></Profile><Button
+     title="go to the test"
+     onPress={() => {
+       navigation.navigate('Test', {
+         params: {
+           breed: 'corgi'
+         }
+       });
+     } } /></>
  );
 }
  
