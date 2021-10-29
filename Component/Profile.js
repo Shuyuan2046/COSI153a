@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, View, Text, StyleSheet, TextInput} from 'react-native';
+import { Button, View, Text, StyleSheet, TextInput, Alert, Pressable} from 'react-native';
 import {useState, useEffect} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -8,6 +8,17 @@ const Profile = (props) => {
   const [name, setName] = useState('');
   const [age,setAge] = useState('')
   const [breed,setBreed] = useState('')
+  const [submitted, setSubmitted] = useState(false);
+
+
+  const onPressHandler = () => {
+    if (Number.isInteger(age)){
+        setSubmitted(!submitted);
+    } else {
+        Alert.alert('Warning', 'The age must be a number', [
+          {text: 'OK'}])
+    }
+  }
 
     useEffect(() => {getData()}
            ,[])
@@ -31,7 +42,6 @@ const Profile = (props) => {
             setAge("")
             setBreed("")
           }
-
 
         } catch(e) {
           console.log("error in getData ")
@@ -69,29 +79,33 @@ const Profile = (props) => {
           <Text>Please enter your pet information in the following lines: </Text>
           <View>
           <TextInput
+              multiline
               style={styles.input}
               placeholder="pet name"
               onChangeText={text => {setName(text)}}
               value={name}
+              maxLength={12}
           />
           <TextInput
+              keyboardType='numeric'
               style={styles.input}
               placeholder="pet age"
               onChangeText={text => {setAge(text)}}
               value={age}
           />
-     
           <TextInput
               style={styles.input}
               placeholder="pet breed"
               onChangeText={text => {setBreed(text)}}
               value={breed}
-          />
+          /> 
           </View>
          
-          <Button
-            color='darkcyan' title='Submit'
-            onPress = {() => {
+         <View style={{backgroundColor: 'darkcyan'}}>
+            <Button
+                color='white'
+                title='Submit'
+                onPress = {() => {
                 console.log("saving profile");
                 const theInfo = {name:name,age:age,breed:breed}
                 console.log(`theInfo=${theInfo}`)
@@ -100,25 +114,32 @@ const Profile = (props) => {
                 storeData(theInfo)
             }}
           />
-          <View style={styles.space} />
+         </View>
+          
+        <View style={styles.space} />
+
+        <View style={{backgroundColor: 'gray'}}>
           <Button
-            color='red' title='Clear memory'
+            color='white' title='Clear memory'
             onPress = {() => {
             console.log('clearing memory');
             clearAll()
             }}
           />
+        </View>
 
-          <View style={styles.space} />
-
+        <View style={styles.space} />
+        
+        <View style={{backgroundColor: 'lightsteelblue'}}>
           <Button
-            color='mediumblue' title='Load Profile from Memory'
+            color='white' title='Load Profile from Memory'
             onPress = {() => {
             console.log('loading profile');
             getData()
             }}
           />
         </View>
+      </View>
     ) 
 }
 
@@ -135,6 +156,8 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+    borderRadius: 5,
+    fontSize: 20,
   },
 
   space: {
