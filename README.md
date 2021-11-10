@@ -9,5 +9,7 @@ The App allows users to send direct messages and using filter function to search
 # Screen Shot
 <img src="https://user-images.githubusercontent.com/72179897/141140688-21c35f9d-4650-4fd6-b317-f8747518ca9e.PNG" width="250" />
 
-
 # Technologies used
+* JavaScript
+* Expo Cli
+* React Native
