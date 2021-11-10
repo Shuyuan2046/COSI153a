@@ -8,3 +8,6 @@ The App allows users to send direct messages and using filter function to search
 
 # Screen Shot
 ![IMG_3262](https://user-images.githubusercontent.com/72179897/141138978-08a2c1dc-6b1a-44c6-829d-21aecd074a76.PNG)
+
+# Technologies used
+
