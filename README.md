@@ -7,3 +7,4 @@ By Shuyuan Wang
 The App allows users to send direct messages and using filter function to search nearby users and finnd match for them. Also, members interact with other members by posting pictures and comments. 
 
 # Screen Shot
+![IMG_3262](https://user-images.githubusercontent.com/72179897/141138978-08a2c1dc-6b1a-44c6-829d-21aecd074a76.PNG)
