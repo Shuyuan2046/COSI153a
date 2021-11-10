@@ -1,13 +1,15 @@
 import React from 'react';
 import { Button, View, Text, StyleSheet, TextInput} from 'react-native';
 import {useState, useEffect} from 'react';
-
+import {useValue} from './ValueContext'
 
 const Test = (props) => {
     const [times, setTimes] = useState(0);
     const [minute, setMinute] = useState(0);
     const [week, setWeek] = useState(0);
     const [evaluate, setEvaluate] = useState('___');
+    //const {currentValue, setCurrentValue} = useValue();
+
 
     useEffect(() => {
         if (week == 0){
@@ -23,11 +25,11 @@ const Test = (props) => {
 
     return (
         <View style = {styles.container}>
-            <View style={{backgroundColor: 'lightgreen'}}>
-                <Text style={{fontSize: 20, fontWeight: 'bold', alignItems: "center"}}> Welcome to the exercise level test! </Text>
+            <View>
+                <Text style = {styles.header}> Exercise level evaluation </Text>
                 <View style = {styles.space}/>
             </View>
-            <Text> your dog's breed is {props.breed}</Text>
+            <Text> your dog's breed is Corgi</Text>
             <View style = {styles.space}/>
             <Text>How many times do you walk your dog every week?</Text>
             <TextInput
@@ -45,14 +47,11 @@ const Test = (props) => {
 
             <View style = {styles.space}/>
 
-            <View style={{backgroundColor:'cornflowerblue'}}>
             <Button
-                color = 'black'
+                color = 'red'
                 title = 'Calculate amount of excercise'
                 onPress = {() => setWeek(times * minute / 60) }
             />
-            </View>
-            
             <View style = {styles.space}/>
             <Text style = {{fontSize: 24, fontWeight: "bold"}}> The amount of excercise of your dog each week is {evaluate}. </Text>
         </View>
@@ -64,9 +63,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+        padding: 20
     },
     header: {
-        fontSize: 30,
+        fontSize: 40,
         fontWeight: 'bold',
     },
     space: {
